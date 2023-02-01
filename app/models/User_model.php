@@ -8,8 +8,11 @@ class User_model{
     {
         $this->db = new Database;
     }
-    public function getUser(){
-        return $this->nama;
+    public function getAllPenumpang(){
+        $query = "SELECT * FROM penumpang";
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultSet();
     }
 
     public function loginUser($data){
@@ -39,8 +42,14 @@ class User_model{
         $this->db->bind('telefone', $data['telefone']);
         $this->db->execute();
         return $this->db->rowCount();
-        
+    }
 
+    public function hapus_penumpang($id){
+        $query = "DELETE from penumpang WHERE id_penumpang=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 
     public function tambahClub($data){
