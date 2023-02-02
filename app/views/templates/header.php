@@ -1,3 +1,9 @@
+<?php 
+if(!$_SESSION['login']){
+    header("location:".BASEURL."/auth/index");
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 

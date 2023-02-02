@@ -44,7 +44,7 @@ class User_model{
         return $this->db->rowCount();
     }
 
-    public function hapus_penumpang($id){
+    public function hapusPenumpang($id){
         $query = "DELETE from penumpang WHERE id_penumpang=:id";
         $this->db->query($query);
         $this->db->bind('id', $id);

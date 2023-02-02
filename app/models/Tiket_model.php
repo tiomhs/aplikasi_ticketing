@@ -23,4 +23,24 @@ class Tiket_model{
          $this->db->bind('id',$id);
          return $this->db->singleSet();
      }
+
+     public function tambahRute($data){
+         $query = "INSERT INTO rute VALUES (null, :tujuan, :rute_awal, :rute_akhir, :harga, :id_transportasi)";
+         $this->db->query($query);
+         $this->db->bind('tujuan', $data['tujuan']);
+         $this->db->bind('rute_awal', $data['rute_awal']);
+         $this->db->bind('rute_akhir', $data['rute_akhir']);
+         $this->db->bind('harga', $data['harga']);
+         $this->db->bind('id_transportasi', $data['id_transportasi']);
+         $this->db->execute();
+         return $this->db->rowCount();
+     }
+
+     public function hapusRute($id){
+         $query = "DELETE FROM rute WHERE id_rute=:id";
+         $this->db->query($query);
+         $this->db->bind('id',$id);
+         $this->db->execute();
+         return $this->db->rowCount();
+     }
 }

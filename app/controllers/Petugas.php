@@ -50,8 +50,36 @@ class Petugas extends Controller {
     }
 
     public function delete_penumpang($id){
-        if($this->model("User_model")->hapus_penumpang($id) > 0){
+        if($this->model("User_model")->hapusPenumpang($id) > 0){
             header("location: ".BASEURL."/petugas/user");
+        }
+    }
+
+    public function rute(){
+        $data['judul'] = 'rute';
+        $data['rute'] = $this->model('Tiket_model')->getAllRute();
+        $this->view('templates/header', $data);
+        $this->view('Petugas/rute',$data);
+        $this->view('templates/footer');
+    }
+
+    public function form_tambah_rute(){
+        $data['judul'] = 'Form Tambah Rute';
+        $data['transportasi'] = $this->model('Transportasi_model')->getAllTransportasi();
+        $this->view('templates/header', $data);
+        $this->view('Petugas/form_petugas/form_tambah_rute',$data);
+        $this->view('templates/footer');
+    }
+
+    public function add_rute(){
+        if($this->model('Tiket_model')->tambahRute($_POST) > 0){
+            header("location:".BASEURL."/petugas/rute");
+        }
+    }
+
+    public function delete_rute($id){
+        if($this->model('Tiket_model')->hapusRute($id) > 0){
+            header("location:".BASEURL."/petugas/rute");
         }
     }
 
