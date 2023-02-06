@@ -120,10 +120,28 @@ class Petugas extends Controller {
     // type transportasi
     public function type_transportasi(){
         $data['judul'] = 'Type Transportasi';
-        $data['type'] = $this->model('type_transportasi')->getAllType();
+        $data['type_tujuan'] = $this->model('Type_Transportasi_model')->getAllType();
         $this->view('templates/header',$data);
-        $this->view('petugas/type_transportasi');
+        $this->view('petugas/type_transportasi',$data);
         $this->view('templates/footer');
+    }
+
+    public function form_tambah_type(){
+        $data['judul'] = 'Form Tambah Type';
+        $this->view('templates/header', $data);
+        $this->view('Petugas/form_petugas/form_tambah_type');
+        $this->view('templates/footer');
+    }
+
+    public function add_type(){
+        if($this->model('Type_Transportasi_model')->tambahType($_POST) > 0){
+            redirect("/petugas/type_transportasi");
+        }
+    }
+    public function delete_type($id){
+        if($this->model('Type_Transportasi_model')->hapusType($id) > 0){
+            redirect("/petugas/type_transportasi");
+        }
     }
 
 }
