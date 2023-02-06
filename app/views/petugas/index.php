@@ -30,9 +30,18 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Type Transportasi</h5>
+                    <h5 class="card-title">Transportasi</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="<?= BASEURL; ?>/petugas/transportasi" class="btn btn-primary">Meluncur</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Type Transportasi</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="<?= BASEURL; ?>/petugas/type_transportasi" class="btn btn-primary">Meluncur</a>
                 </div>
             </div>
         </div>

@@ -61,6 +61,43 @@ class User_model{
         return $this->db->singleSet();
     }
 
+    public function deleteClub($id){
+        $query = "call deleteDataClub(:id)";
+        $this->db->query($query);
+        $this->db->bind('id',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function single($id){
+       $query = "SELECT * FROM club WHERE id=:id";
+       $this->db->query($query);
+       $this->db->bind('id',$id);
+       return $this->db->singleSet();
+    }
+
+    public function getClubId($id){
+        $query = "SELECT * FROM club WHERE id=:id";
+        $this->db->query($query);
+        $this->db->bind('id',$id);
+        return $this->db->singleSet();
+    }
+
+    public function editClubId($data){
+        $query = "call updateDataClub(:id,:club)";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('club', $data['club']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function transaksiMhs(){
+        $query = "SELECT * FROM trans aksiMhs";
+        $this->db->query($query);
+        $this->db->execute(); 
+        return $this->db->resultSet();
+    }
+
     public function all(){
         $this->db->query('SELECT * FROM club');
         return $this->db->resultSet();

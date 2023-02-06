@@ -25,9 +25,34 @@ class About extends Controller{
         $this->view('about/club', $data);
         $this->view('templates/footer');
     }
+    public function mhs(){
+        $data['judul'] = 'Mhs';
+        $data['mhs'] = $this->model("User_model")->transaksiMhs();
+        $this->view('templates/header', $data);
+        $this->view('about/mhs', $data);
+        $this->view('templates/footer');
+    }
 
     public function input(){
         $data['club'] = $this->model('User_model')->tambahClub($_POST);
         header('Location: ' . BASEURL . '/about/club');
+    }
+
+    public function delete($id){
+        if($this->model('User_model')->deleteClub($id));
+        redirect("/about/club");
+    }
+
+    public function edit($id){
+        $data['judul'] = 'club';
+        $data['clubId'] = $this->model("User_model")->getClubId($id);
+        $this->view('templates/header', $data);
+        $this->view('about/editClub', $data);
+        $this->view('templates/footer');
+    }
+
+    public function editClub(){
+        if($this->model('User_model')->editClubId($_POST));
+        redirect("/about/club");
     }
 }

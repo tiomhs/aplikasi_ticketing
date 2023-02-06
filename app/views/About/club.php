@@ -5,7 +5,25 @@
         <button type="submit">meluncur</button>
     </form>
     
-    <?php foreach ($data['all'] as $club): ?>
-        <h1><?= $club['club']; ?></h1>
-    <?php endforeach; ?>
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Nama Club</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+                <?php foreach ($data['all'] as $club): ?>
+                <tr>
+                    <td><p><?= $club['club']; ?></p></td>
+                    <td>
+                        <a href="<?= BASEURL; ?>/about/edit/<?= $club['id']; ?>" class="btn btn-success">Edit</a>
+                        <a href="<?= BASEURL; ?>/about/delete/<?= $club['id']; ?>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        
+        
 </div>
