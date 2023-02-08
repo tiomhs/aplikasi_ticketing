@@ -1,9 +1,9 @@
 <div class="container">
-    <h4>Rute Tujuan</h4>
-    <a href="<?= BASEURL; ?>/petugas/form_tambah_rute" class="btn btn-primary">Tambah Rute</a>
+    <h4>Rute Perjalanan</h4>
+    <a href="<?= BASEURL; ?>/petugas/form_tambah_rute" class="btn btn-primary mb-2">Tambah Rute Perjalanan</a>
     <div class="row">
-        <div class="col-8">
-            <table class="table">
+        <div class="col-12">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -17,14 +17,20 @@
                 <tbody>
                     <?php foreach($data['rute'] as $pesan): ?>
                         <tr>
-                            <td>++</td>
+                            <td>#</td>
                             <td><?= $pesan['tujuan']; ?></td>
                             <td><?= $pesan['rute_awal']; ?></td>
                             <td><?= $pesan['rute_akhir']; ?></td>
                             <td><?= $pesan['harga']; ?></td>
                             <td>
-                                <a href="<?= BASEURL; ?>/petugas/edit/<?= $pesan['id_rute']; ?>" class="btn btn-success">Edit</a><br>
-                                <a href="<?= BASEURL; ?>/petugas/delete_rute/<?= $pesan['id_rute']; ?>" class="btn btn-danger">Hapus</a>
+                                <div class="row justify-content-center">
+                                    <div class="col-3">
+                                        <a href="<?= BASEURL; ?>/petugas/edit/<?= $pesan['id_rute']; ?>" class="btn btn-success">Edit</a><br>
+                                    </div>
+                                    <div class="col-3">
+                                        <a href="<?= BASEURL; ?>/petugas/delete_rute/<?= $pesan['id_rute']; ?>" class="btn btn-danger">Hapus</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

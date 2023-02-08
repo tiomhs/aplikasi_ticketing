@@ -15,6 +15,14 @@ class User_model{
         return $this->db->resultSet();
     }
 
+    public function getPenumpangById($id){
+        $query = "SELECT * FROM penumpang WHERE id_penumpang=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+        return $this->db->singleSet();
+    }
+
     public function loginUser($data){
         $this->db->query("SELECT * FROM penumpang WHERE username=:username AND password=:password");
         $this->db->bind('username', $data['username']);

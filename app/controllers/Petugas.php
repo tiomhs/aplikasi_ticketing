@@ -3,6 +3,7 @@
 class Petugas extends Controller {
     public function index(){
         $data['judul'] = 'Petugas';
+        $data['petugas'] = $this->model("Petugas_model")->getPetugasById($_SESSION['id_petugas']);
         $this->view('templates/header', $data);
         $this->view('Petugas/index', $data);
         $this->view('templates/footer');
@@ -92,7 +93,7 @@ class Petugas extends Controller {
     // transportasi
     public function transportasi(){
         $data['judul'] = 'transportasi';
-        $data['transportasi'] = $this->model('transportasi_model')->getAllTransportation();
+        $data['transportasi'] = $this->model('transportasi_model')->getAllTransportasi();
         $this->view('templates/header',$data);
         $this->view('petugas/transportasi',$data);
         $this->view('templates/footer');

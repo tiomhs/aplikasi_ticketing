@@ -16,6 +16,14 @@ class Petugas_model {
         return $this->db->resultSet();
     }
 
+    public function getPetugasById($id){
+        $query = "SELECT * FROM petugas WHERE id_petugas=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+        return $this->db->singleSet();
+    }
+
     public function tambahPetugas($data){
         $query = "INSERT INTO petugas Values (null, :username, :password, :nama_petugas, 2)";
         $this->db->query($query);

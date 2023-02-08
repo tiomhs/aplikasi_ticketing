@@ -8,7 +8,7 @@ class Transportasi_model{
         $this->db = new Database;
     }
 
-    public function getAllTransportation(){
+    public function getAllTransportasi(){
         $query = "SELECT * FROM transportasi";
         $this->db->query($query);
         $this->db->execute();
